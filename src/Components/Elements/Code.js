@@ -6,11 +6,11 @@ import './../../../node_modules/codemirror/mode/python/python.js';
 import piston from 'piston-client';
 import React, { useState, Component, useEffect } from 'react';
 
-function run_lesson(code) {
+async function run_lesson(code) {
   console.log(code);
   const client = piston({ server: 'https://emkc.org' });
 
-  const result = client.execute('python', code);
+  const result = await client.execute('python', code);
   console.log(result);
   return result;
 }
@@ -19,23 +19,19 @@ export default class Code extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      runCode: false,
       code: 'print("Hello Nala!")',
       result: null,
+      run: false,
     };
   }
 
-  runCode = () => {
-    this.setState({ runCode: true });
-  };
-
-  renderCode = async () => {
+  renderResult = async () => {
     try {
-      const res = await run_lesson(this.code);
-
       this.setState({
-        Code: res,
+        result: await run_lesson(this.state.code),
       });
+
+      this.setState({ run: true });
     } catch (err) {
       console.log(err);
     }
@@ -58,7 +54,12 @@ export default class Code extends Component {
             });
           }}
         />
-        <button id="run" onClick={this.runCode}>
+        <button
+          id="run"
+          onClick={() => {
+            this.renderResult();
+          }}
+        >
           Run
         </button>
 
@@ -74,7 +75,7 @@ export default class Code extends Component {
         </select>
 
         <div className="Output">
-          <pre>{this.state.runCode && this.state.Code}</pre>
+          <pre>{this.state.run && this.state.result.version}</pre>
         </div>
       </div>
     );
