@@ -8,7 +8,7 @@ function App() {
         <h1 id="title">Lesson Tester</h1>
         <h3 id="author">by Jake Roggenbuck</h3>
 
-        <Code code="print('hello')" />
+        <Code code='print("Hello Simba!")' />
       </header>
     </div>
   );

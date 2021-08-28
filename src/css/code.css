@@ -1,4 +1,29 @@
 .code-box {
   width: 90%;
   height: 30%;
+  margin: auto;
+}
+
+#run {
+  margin-top: 10px;
+  margin-right: 10px;
+  width: 80px;
+  height: 30px;
+  border-radius: 0px;
+  border-width: 0;
+  color: #ffffff;
+  background-color: #05ab6f;
+}
+
+#run:active {
+  background-color: #0c8a5c;
+}
+
+#lesson-select {
+  margin-top: 10px;
+  margin-right: 10px;
+  width: 80px;
+  height: 30px;
+  border-radius: 0px;
+  border-width: 0;
 }
