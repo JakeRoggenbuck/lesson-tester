@@ -18,3 +18,36 @@
   flex-direction: column;
   color: white;
 }
+
+#jake {
+  transition: 0.5s;
+}
+
+#jake:link {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+#jake:visited {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+#jake:hover:after {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 20px;
+  color: #a5a5a5;
+}
+
+#jake:hover {
+  color: #ffffff;
+  text-decoration: none;
+  content: ' (jr0.org)';
+  color: #a5a5a5;
+}
+
+#jake:active {
+  color: #ffffff;
+  text-decoration: none;
+}
