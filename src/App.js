@@ -14,8 +14,11 @@ function App() {
         </h3>
 
         <Code code='print("Hello Simba!")' />
+
+        <a id="source" href="https://github.com/JakeRoggenbuck/lesson-tester">
+          Source
+        </a>
       </header>
-      <a href="https://github.com/JakeRoggenbuck/lesson-tester">Source</a>
     </div>
   );
 }
