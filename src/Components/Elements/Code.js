@@ -7,12 +7,8 @@ import piston from 'piston-client';
 import React, { useState, Component, useEffect } from 'react';
 
 async function run_lesson(code) {
-  console.log(code);
   const client = piston({ server: 'https://emkc.org' });
-
-  const result = await client.execute('python', code);
-  console.log(result);
-  return result;
+  return await client.execute('python', code);
 }
 
 export default class Code extends Component {
@@ -27,10 +23,12 @@ export default class Code extends Component {
 
   renderResult = async () => {
     try {
+      // Set the result to the output of the api running the code
       this.setState({
         result: await run_lesson(this.state.code),
       });
 
+      // Save in state that the code has been ran
       this.setState({ run: true });
     } catch (err) {
       console.log(err);
@@ -47,13 +45,15 @@ export default class Code extends Component {
             lineNumbers: true,
             theme: 'nord',
           }}
-          onChange={(editor, data, value) => {
+          // Update the values of the code and run state
+          onChange={(value) => {
             this.setState({
-              runCode: false,
-              outputText: value,
+              run: false,
+              code: value,
             });
           }}
         />
+
         <button
           id="run"
           onClick={() => {
@@ -76,6 +76,7 @@ export default class Code extends Component {
 
         <div className="Output">
           <pre>{this.state.run && this.state.result.version}</pre>
+          <pre>{this.state.run && this.state.result.run.output}</pre>
         </div>
       </div>
     );
