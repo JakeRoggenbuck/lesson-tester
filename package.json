@@ -8,7 +8,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "codemirror": "^5.62.3",
-    "netlify-cli": "^6.7.7",
+    "netlify-cli": "^20.0.4",
     "piston-client": "^1.0.2",
     "react": "^17.0.2",
     "react-code-blocks": "^0.0.9-0",
